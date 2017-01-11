@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginBottom="35dp"
+        android:id="@+id/btnAnadirBebida"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:rippleColor="@color/cardview_dark_background"
+        app:elevation="9dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_alignParentBottom="true"
+        />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:layout_alignLeft="@+id/btnAnadirBebida"
+        android:layout_alignStart="@+id/btnAnadirBebida"
+        android:id="@+id/textView14"
+        android:layout_alignRight="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12" />
+
+
+    <TextView
+        android:text="@string/tamaño"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
+
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTamaño"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@+id/btnAnadirBebida"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:text="@string/clasica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbClasica"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/clasicaqueso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbClasicaconqueso"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/doblequeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbDobleconqueso"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/vegetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbVegetal"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/especial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbEspecial"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <TextView
+
+        android:text="@string/tipocarne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/spinnerTamaño"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="52dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCarne"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_width="300dp" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/hamburguesaclasica"
+        android:id="@+id/imageView7"
+        android:layout_alignTop="@+id/radioGroup"
+        android:layout_alignStart="@+id/imageView6" />
+
+    <ImageView
+        app:srcCompat="@drawable/cheeseburguer"
+        android:id="@+id/imageView6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView7"
+        android:layout_alignEnd="@+id/imageView4" />
+
+    <ImageView
+        app:srcCompat="@drawable/doublecheeseburguer"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/imageView6"
+        android:layout_toEndOf="@+id/radioGroup"
+        android:layout_height="40dp"
+        android:layout_width="40dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/especial"
+        android:id="@+id/imageView3"
+        android:layout_weight="1"
+        android:layout_below="@+id/imageView8"
+        android:layout_alignStart="@+id/imageView8" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/vegetal"
+        android:id="@+id/imageView8"
+        android:layout_below="@+id/imageView4"
+        android:layout_toEndOf="@+id/radioGroup" />
+
+    <ImageView
+        app:srcCompat="@drawable/botella"
+        android:id="@+id/imageView5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignEnd="@+id/fabInfoCarne" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_dialog_info"
+        android:id="@+id/fabInfoCarne"
+        android:layout_alignBottom="@+id/spinnerCarne"
+        android:layout_toEndOf="@+id/spinnerCarne"
+        android:layout_marginStart="10dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_dialog_info"
+        android:id="@+id/fabInfoTamaño"
+        android:layout_alignTop="@+id/spinnerTamaño"
+        android:layout_alignStart="@+id/fabInfoCarne" />
+
+
+</RelativeLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <TextView
+        android:text="@string/tamaño"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView10"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/spinnerTamaño"
+        android:layout_toLeftOf="@+id/btnFinalizar"
+        android:layout_toStartOf="@+id/btnFinalizar"
+        android:spinnerMode="dialog" />
+
+    <TextView
+        android:text="@string/tipocarne"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerTamaño"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp"
+        android:id="@+id/textView11"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView3"
+        android:layout_alignRight="@+id/spinnerTamaño"
+        android:layout_alignEnd="@+id/spinnerTamaño"
+        android:spinnerMode="dialog"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        android:layout_below="@+id/textView10"
+        android:layout_alignRight="@+id/btnFinalizar"
+        android:layout_alignEnd="@+id/btnFinalizar"
+        android:id="@+id/fabInfoTamaño" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        android:id="@+id/fabInfoCarne"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/fabInfoTamaño"
+        android:layout_alignStart="@+id/fabInfoTamaño" />
+
+    <Button
+        android:text="@string/añadir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="47dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="21dp"
+        android:id="@+id/btnFinalizar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/numberPicker2"
+        android:layout_toStartOf="@+id/numberPicker2">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="338dp"
+                android:layout_height="285dp" >
+
+                <RadioButton
+                    android:text="@string/clasica"
+                    android:drawableRight="@drawable/hamburguesaclasica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="@string/doblequeso"
+                    android:drawableRight="@drawable/doublecheeseburguer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton3"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="@string/vegetal"
+                    android:drawableRight="@drawable/vegetal"
+                    android:layout_width="198dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton4" />
+
+                <RadioButton
+                    android:text="@string/clasicaqueso"
+                    android:drawableRight="@drawable/cheeseburguer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:id="@+id/radioButton2" />
+
+                <RadioButton
+                    android:text="@string/especial"
+                    android:drawableRight="@drawable/especial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton5" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <NumberPicker
+        android:layout_width="52dp"
+        android:layout_height="79dp"
+        android:id="@+id/numberPicker2"
+        android:layout_above="@+id/btnFinalizar"
+        android:layout_toRightOf="@+id/fabInfoCarne"
+        android:layout_toEndOf="@+id/fabInfoCarne" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:id="@+id/jon" />
+
+
+</RelativeLayout>

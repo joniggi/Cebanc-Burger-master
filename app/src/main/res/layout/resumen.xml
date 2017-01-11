@@ -23,9 +23,9 @@
                 android:textSize="18sp" />
 
             <ListView
-                android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:id="@+id/listView4" />
+                android:id="@+id/listView4"
+                android:layout_width="match_parent" />
 
             <TextView
                 android:text="@string/bElegidas"

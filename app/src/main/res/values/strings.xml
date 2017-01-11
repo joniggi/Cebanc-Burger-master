@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Cebanc-Burger</string>
+    <string name="mejor">¡El mejor restaurante de Hamburgesas!</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="cebanc">Cebanc-Burger</string>
+    <string name="entrar">Entrar</string>
+    <string name="introduzca">Introduzca sus datos</string>
+    <string name="nombre">Nombre:</string>
+    <string name="nom">Nombre</string>
+    <string name="apellido">Apellidos:</string>
+    <string name="ape">Apellidos</string>
+    <string name="direccion">Direccion:</string>
+    <string name="dire">Direccion</string>
+    <string name="telefono">Teléfono:</string>
+    <string name="tlf">Teléfono</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="salir">Salir</string>
+    <string name="añadir">Añadir</string>
+    <string name="ok">OK</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="tipocarne">Tipo de carne:</string>
+    <string name="tamaño">Tamaño:</string>
+    <string name="hseleccionadas"><u>Hamburguesas seleccionadas</u></string>
+    <string name="bseleccionadas"><u>Bebidas seleccionadas</u></string>
+    <string name="clasica">Clásica</string>
+    <string name="clasicaqueso">Clásica con queso</string>
+    <string name="doblequeso">Doble con queso</string>
+    <string name="vegetal">Vegetal</string>
+    <string name="especial">Especial</string>
+    <string name="hElegidas">Hamburguesas elegidas:</string>
+    <string name="bElegidas">Bebidas elegidas:</string>
+    <string name="total">Total:</string>
+    <string-array name="Drinks">
+        <item>Coca cola</item>
+        <item>Kas Naranja</item>
+        <item>Kas Limon</item>
+        <item>Cerveza</item>
+        <item>Agua</item>
+    </string-array>
+    <string-array name="Tamaño">
+        <item>Normal</item>
+        <item>Whopper</item>
+    </string-array>
+    <string-array name="Carne">
+        <item>Pollo</item>
+        <item>Vacuno</item>
+        <item>Buey</item>
+    </string-array>
+</resources>

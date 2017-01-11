@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.asier.cebanc_burger">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DatosCliente"
+            android:label=""/>
+        <activity android:name=".AnadirHamburguesas"
+            android:label=""/>
+        <activity android:name=".Hamburguesas"
+            android:label=""/>
+        <activity android:name=".AnadirBebidas"
+            android:label=""/>
+        <activity android:name=".Bebidas"
+            android:label=""/>
+        <activity android:name=".Resumen"
+            android:label=""/>
+
+        <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDSjZXW1pd4gVdh7i7-5pr16pf8WQ8zkK4" />
+    </application>
+
+</manifest>
