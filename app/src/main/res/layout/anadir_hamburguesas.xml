@@ -4,20 +4,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </android.support.design.widget.AppBarLayout>
-
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -193,6 +179,29 @@
         android:id="@+id/fabInfoTamaño"
         android:layout_alignTop="@+id/spinnerTamaño"
         android:layout_alignStart="@+id/fabInfoCarne" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:id="@+id/numberPicker3"
+        android:layout_above="@+id/imageView4"
+        android:layout_toEndOf="@+id/spinnerCarne"
+        android:layout_height="100dp" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.AppBarLayout>
 
 
 </RelativeLayout>

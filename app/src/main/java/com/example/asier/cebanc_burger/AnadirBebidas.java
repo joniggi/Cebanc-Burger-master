@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,19 +19,20 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Asier on 02/01/2017.
- */
 
 public class AnadirBebidas extends AppCompatActivity {
     int numero;
     private TextView texto;
     private long backPressedTime = 0;
     private FloatingActionButton fab;
-    //private ViewPager viewPager;
-    private Button resumen;
+
+    private ImageView resumen;
     private Spinner spinnerBebidas;
     private double precioBebidas=0;
+    private String nombre;
+    private String apellidos;
+    private String direccion;
+    private String telefono;
 
     public ArrayList<String> bebidass;
     public ArrayAdapter<String> adaptador2;
@@ -46,15 +46,16 @@ public class AnadirBebidas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anadir_bebidas);
-
+        //Aqui recojemos los datos de la actividad anterior
         Bundle extras = getIntent().getExtras();
         hamburguesass = extras.getStringArrayList("array2");
         precioTotalHamburguesas = extras.getDouble("preciototalhamburguesas");
 
+        //identificamos los objetos del xml
         texto = (TextView) findViewById(R.id.textView14);
         recogerDatosHamburguesa();
         fab=(FloatingActionButton)findViewById(R.id.btnAnadirBebida);
-        resumen=(Button)findViewById(R.id.button);
+        resumen=(ImageView) findViewById(R.id.imageView8);
         añadir=(Button)findViewById(R.id.añadir);
         spinnerBebidas = (Spinner) findViewById(R.id.spinnerBebidas);
         tabLayout();
@@ -62,13 +63,13 @@ public class AnadirBebidas extends AppCompatActivity {
 
         bebidass=new ArrayList<String>();
 
-
+        //creamos el adapter con el string array correspondiente y le asignamos dicho adapter al listview correspondiente
         adaptador2=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,bebidass);
         listView2=(ListView)findViewById(R.id.listView2);
         listView2.setAdapter(adaptador2);
 
 
-
+    //este metodo elemina la posicion deseada del listview
         listView2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,18 +83,9 @@ public class AnadirBebidas extends AppCompatActivity {
                     public void onClick(DialogInterface dialogo1, int id) {
                         bebidass.remove(posicion);
                         adaptador2.notifyDataSetChanged();
-                        //MIRAR LO DE LOS PRECIOS PARA RESTAR
-                        if(posicion==0){
-                            precioBebidas=precioBebidas-1.5;
-                        }else if(posicion==1){
-                            precioBebidas=precioBebidas-2;
-                        }else if(posicion==2){
-                            precioBebidas=precioBebidas-2;
-                        }else if(posicion==3){
-                            precioBebidas=precioBebidas-2.5;
-                        }else if(posicion==4){
-                            precioBebidas=precioBebidas-1;
-                        }
+
+                        precioBebidas=precioBebidas-2;
+
                     }
                 });
                 dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -106,6 +98,7 @@ public class AnadirBebidas extends AppCompatActivity {
             }
         });
 
+        //creamos el adapter con el string array correspondiente y le asignamos dicho adapter al spinner
         ArrayAdapter<CharSequence> adaptador =
                 ArrayAdapter.createFromResource
                         (this, R.array.Drinks, android.R.layout.simple_spinner_item);
@@ -128,13 +121,14 @@ public class AnadirBebidas extends AppCompatActivity {
                         //
                     }
                 });
+        //añade las bebidas
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (numero==0){
-                    bebidass.add("Coca-Cola       1,50€");
-                    precioBebidas=precioBebidas+1.5;
+                    bebidass.add("Coca-Cola       2€");
+                    precioBebidas=precioBebidas+2;
                     adaptador2.notifyDataSetChanged();
                 }else if(numero==1){
                     bebidass.add("Kas Naranja       2€");
@@ -145,12 +139,12 @@ public class AnadirBebidas extends AppCompatActivity {
                     precioBebidas=precioBebidas+2;
                     adaptador2.notifyDataSetChanged();
                 }else if(numero==3){
-                    bebidass.add("Cerveza       2,50€");
-                    precioBebidas=precioBebidas+2.5;
+                    bebidass.add("Cerveza       2€");
+                    precioBebidas=precioBebidas+2;
                     adaptador2.notifyDataSetChanged();
                 }else if(numero==4){
-                    bebidass.add("Agua       1€");
-                    precioBebidas=precioBebidas+1;
+                    bebidass.add("Agua       2€");
+                    precioBebidas=precioBebidas+2;
                     adaptador2.notifyDataSetChanged();
                 }
 
@@ -169,32 +163,35 @@ public class AnadirBebidas extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
+
+    //recoje los datos de la actividad anterior
     public void recogerDatosHamburguesa() {
         Bundle extras = getIntent().getExtras();
-        String s = "Bueno " + extras.getString("zipi") + " es hora de elejir las bebidas";
+        String s = "Bueno " + extras.getString("zipi") + " es hora de elegir las bebidas";
         texto.setText(s);
+        nombre=""+extras.getString("nombre");
+        apellidos=""+extras.getString("apellidos");
+        direccion=""+extras.getString("direccion");
+        telefono=""+extras.getString("telefono");
     }
 
-   /* public void lanzarBebidas(){
-        Intent in=new Intent(AnadirBebidas.this,Bebidas.class);
-        in.putExtra("array1",bebidass);
-        startActivity(in);
-        overridePendingTransition(R.anim.zoom_forward_in,R.anim.zoom_forward_out);}*/
-
+    //lanza los datos y la siguiente actividad
     public void lanzaResumen(){
         Intent i=new Intent(AnadirBebidas.this,Resumen.class);
         i.putExtra("array1",bebidass);
         i.putExtra("array2",hamburguesass);
         i.putExtra("preciobebidas",precioBebidas);
         i.putExtra("preciototalhamburguesas",precioTotalHamburguesas);
+        i.putExtra("nombre", nombre );
+        i.putExtra("apellidos", apellidos );
+        i.putExtra("direccion", direccion );
+        i.putExtra("telefono", telefono );
         startActivity(i);
         overridePendingTransition(R.anim.zoom_forward_in,R.anim.zoom_forward_out);
     }
 
+    //este metodo vuelve atras siempre que pulses el boton dos veces en el intermalo de tiempo determinado
     public void onBackPressed() {
         long t = System.currentTimeMillis();
         if (t - backPressedTime > 2000) {    // El tiempo para clickar  otra vez y salir
@@ -208,6 +205,7 @@ public class AnadirBebidas extends AppCompatActivity {
         }
     }
 
+    //carga el tablayout
     public void tabLayout() {
         TabLayout tabs2 = (TabLayout) findViewById(R.id.tabs2);
         tabs2.addTab(tabs2.newTab().setText("BEBIDAS").setIcon(R.drawable.logob));

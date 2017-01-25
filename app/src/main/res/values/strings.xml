@@ -24,9 +24,9 @@
     <string name="bseleccionadas"><u>Bebidas seleccionadas</u></string>
     <string name="clasica">Clásica</string>
     <string name="clasicaqueso">Clásica con queso</string>
-    <string name="doblequeso">Doble con queso</string>
-    <string name="vegetal">Vegetal</string>
-    <string name="especial">Especial</string>
+    <string name="doblequeso">Doble con queso +1€</string>
+    <string name="vegetal">Vegetal +2€</string>
+    <string name="especial">Especial +2€</string>
     <string name="hElegidas">Hamburguesas elegidas:</string>
     <string name="bElegidas">Bebidas elegidas:</string>
     <string name="total">Total:</string>
@@ -38,8 +38,8 @@
         <item>Agua</item>
     </string-array>
     <string-array name="Tamaño">
-        <item>Normal</item>
-        <item>Whopper</item>
+        <item>Normal 4€</item>
+        <item>Whopper 5€</item>
     </string-array>
     <string-array name="Carne">
         <item>Pollo</item>

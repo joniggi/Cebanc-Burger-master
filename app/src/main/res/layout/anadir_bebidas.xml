@@ -20,30 +20,6 @@
         android:layout_alignParentBottom="true"
         />
 
-    <Button
-        android:drawableRight="@drawable/botella"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_alignBottom="@+id/btnAnadirBebida"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/bseleccionadas"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView12"
-
-        android:layout_below="@+id/appbar"
-        android:layout_alignLeft="@+id/textView12"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_marginTop="28dp" />
-
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
@@ -72,19 +48,39 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <ListView
+        android:layout_height="400dp"
+        android:id="@+id/listView2"
+        android:layout_width="250dp"
+        android:layout_alignBottom="@+id/btnAnadirBebida"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp" />
+
+    <ImageView
+        app:srcCompat="@drawable/check"
+        android:id="@+id/imageView8"
+        android:layout_alignBottom="@+id/listView2"
+        android:layout_toEndOf="@+id/listView2"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerBebidas"
-        android:layout_below="@+id/textView12"
+        android:layout_below="@+id/textView14"
         android:layout_alignParentStart="true" />
 
-    <ListView
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:id="@+id/listView2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="@string/bseleccionadas"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+
+        android:layout_below="@+id/spinnerBebidas"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

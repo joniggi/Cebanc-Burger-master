@@ -1,4 +1,4 @@
-package com.example.asier.cebanc_burger;
+/*package com.example.asier.cebanc_burger;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-/**
- * Muestra el mapa
- */
+
 public class FirstMapFragment extends SupportMapFragment {
 
     public FirstMapFragment() {
@@ -31,3 +29,6 @@ public class FirstMapFragment extends SupportMapFragment {
 
 
 }
+
+
+*/

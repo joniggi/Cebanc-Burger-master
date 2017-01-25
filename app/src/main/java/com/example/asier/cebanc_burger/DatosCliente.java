@@ -1,18 +1,18 @@
 package com.example.asier.cebanc_burger;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class DatosCliente extends MainActivity{
+
+    //definimos las varible que vamos a utilizar
     private ImageView siguiente;
     private ImageView salir;
 
@@ -24,12 +24,14 @@ public class DatosCliente extends MainActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.datos_cliente);
 
+       //identificamos los objetos del xml
         siguiente = (ImageView) findViewById(R.id.buttonSiguiente);
         salir = (ImageView) findViewById(R.id.buttonSalir);
         nombre = (EditText) findViewById(R.id.editTextNombre);
         apellidos = (EditText) findViewById(R.id.editTextApellido);
         direccion = (EditText) findViewById(R.id.editTextDireccion);
         telefono = (EditText) findViewById(R.id.editTextTelefono);
+
 
 
         siguiente.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +49,14 @@ public class DatosCliente extends MainActivity{
             }
         });
 
+//aqui queriamos hacer un metodo pero sino no funcionaba
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs4);
+        tabs.addTab(tabs.newTab().setText("DATOS").setIcon(R.drawable.logod));
+
 
     }
 
+    //este metodo recibe un booleano y en caso de que sea true lanza la actividad
     public void lanzarPedido(boolean v) {
         if (v == true) {
             Intent i = new Intent(DatosCliente.this, AnadirHamburguesas.class);
@@ -62,6 +69,7 @@ public class DatosCliente extends MainActivity{
         }
     }
 
+    //este metodo verifica que esten los datos introducidos y en dicho caso devuelve un booleano = true
     public boolean comprobacion() {
         boolean verificar = false;
         if (nombre.getText().toString().equals("") && apellidos.getText().toString().equals("") && direccion.getText().toString().equals("") && telefono.getText().toString().equals("")) {
@@ -93,8 +101,7 @@ public class DatosCliente extends MainActivity{
     }
 
 
-
-
+//este metodo lanza una ventana emergente que termina la actividad
     public void salir() {
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
         dialogo1.setTitle("Salir");
@@ -111,7 +118,6 @@ public class DatosCliente extends MainActivity{
             }
         });
         dialogo1.show();
-
 
     }
 

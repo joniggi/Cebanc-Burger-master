@@ -1,6 +1,11 @@
 package com.example.asier.cebanc_burger;
 
+import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,20 +17,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class Resumen extends AppCompatActivity {
+//declaramos las variable necesarias
 
     private FloatingActionButton llam;
-    private FloatingActionButton facebook;
+    private Button stop;
+    private FloatingActionButton carrito;
+
     public ArrayList<String> bebidass;
     public ArrayAdapter<String> adaptador3;
     public ListView listView3;
@@ -40,9 +44,14 @@ public class Resumen extends AppCompatActivity {
     private String cadena;
     private String cadena2;
     private TextView total;
+    private String nombre;
+    private String apellidos;
+    private String direccion;
+    private String telefono;
 
-    ImageView carrito;
+
     MediaPlayer mp3;
+    MediaPlayer mp32;
 
     Button btnStartProgress;
     ProgressDialog progressBar;
@@ -52,31 +61,41 @@ public class Resumen extends AppCompatActivity {
     private long tiempo2 = 0;
 
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resumen);
 
+        //recohjemos los datos de la actividad anterior
         Bundle extras = getIntent().getExtras();
         bebidass = extras.getStringArrayList("array1");
         hamburguesass = extras.getStringArrayList("array2");
+        nombre=""+extras.getString("nombre");
+        apellidos=""+extras.getString("apellidos");
+        direccion=""+extras.getString("direccion");
+        telefono=""+extras.getString("telefono");
 
         precioBebidas=extras.getDouble("preciobebidas");
         precioTotalHamburguesas=extras.getDouble("preciototalhamburguesas");
 
         bebidass.get(0);
+        //identificamos los objetos del xml
         llam=(FloatingActionButton)findViewById(R.id.btnLlamar);
-        facebook=(FloatingActionButton) findViewById(R.id.facebook);
-        carrito=(ImageView) findViewById(R.id.carrito);
+        stop=(Button) findViewById(R.id.stop);
+        carrito=(FloatingActionButton) findViewById(R.id.carrito);
         total=(TextView) findViewById(R.id.total);
 
         mp3 = MediaPlayer.create(this,R.raw.registradora);
+        mp32 = MediaPlayer.create(this,R.raw.notificacion);
 
         tabLayout();
+        infor();
 
         precioTotal=precioBebidas+precioTotalHamburguesas;
         cadena = String.valueOf(precioTotal);
         total.setText(cadena + "€");
+
+        regalo();
 
         cadena2 = String.valueOf(precioHamburguesas);
 
@@ -87,12 +106,10 @@ public class Resumen extends AppCompatActivity {
             llamar(v);
         }
     });
-        facebook.setOnClickListener(new View.OnClickListener() {
+        stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("http://www.facebook.com/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                salir();
             }
         });
 
@@ -144,10 +161,12 @@ public class Resumen extends AppCompatActivity {
 
         //bebidass.add("");
 
+        //creamos el adapter con el string array correspondiente y le asignamos dicho adapter al listview correspondiente
         adaptador3=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,bebidass);
         listView3=(ListView)findViewById(R.id.listView3);
         listView3.setAdapter(adaptador3);
 
+        //de nuevo creamos el adapter con el string array correspondiente y le asignamos dicho adapter al listview correspondiente
         adaptador4=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,hamburguesass);
         listView4=(ListView)findViewById(R.id.listView4);
         listView4.setAdapter(adaptador4);
@@ -155,7 +174,7 @@ public class Resumen extends AppCompatActivity {
 
 }
 
-
+    //este metodo llama al telefono indicado en el metodo
     public void llamar(View view){
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:943674987"));
@@ -191,9 +210,76 @@ public class Resumen extends AppCompatActivity {
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
+    //metodo que carga el tablayout
     public void tabLayout() {
         TabLayout tabs2 = (TabLayout) findViewById(R.id.tabs3);
         tabs2.addTab(tabs2.newTab().setText("RESUMEN").setIcon(R.drawable.logor));
+
+    }
+
+    //este metodo lanza una notificacion dependiendo del importe de la compra
+    public void regalo(){
+
+        if(precioTotal>15 && precioTotal<=25){
+            mp32.start();
+            NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Notification notify=new Notification.Builder
+                    (getApplicationContext()).setContentTitle("Peluche Android").setContentText("Gracias por su compra, ha ganado un fantastico peluche Android").
+                    setContentTitle("Peluche Android").setSmallIcon(R.drawable.android).build();
+
+            notify.flags |= Notification.FLAG_AUTO_CANCEL;
+            notif.notify(0, notify);
+        }else if(precioTotal>25){
+            mp32.start();
+            NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Notification notify=new Notification.Builder
+                    (getApplicationContext()).setContentTitle("Cheque regalo").setContentText("Gracias por su compra, ha ganado un cheque comida para comer en Cebanc").
+                    setContentTitle("Cheque regalo").setSmallIcon(R.drawable.chequeregalo).build();
+
+            notify.flags |= Notification.FLAG_AUTO_CANCEL;
+            notif.notify(0, notify);
+        }
+
+    }
+
+    //metodo que lanza una ventana emergente para poder salir
+    public void salir() {
+
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("Salir");
+        dialogo1.setMessage("¿Estas seguro de que deseas salir?");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                Toast.makeText(Resumen.this, "Hasta pronto !!!", Toast.LENGTH_SHORT).show();
+                finishAffinity();
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+
+            }
+        });
+        dialogo1.show();
+
+
+    }
+
+    //metodo que informa al usuario de sus datos
+    public void infor() {
+
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("Informacion del cliente");
+        dialogo1.setMessage("Nombre: " + nombre +"\n Apellidos: " + apellidos +"\n Direccion: " + direccion + "\n Telefono: " + telefono);
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+
+            }
+        });
+
+        dialogo1.show();
+
 
     }
 
