@@ -269,7 +269,7 @@ public class Resumen extends AppCompatActivity {
     public void infor() {
 
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
-        dialogo1.setTitle("Informacion del cliente");
+        dialogo1.setTitle("Información del cliente");
         dialogo1.setMessage("Nombre: " + nombre +"\n Apellidos: " + apellidos +"\n Direccion: " + direccion + "\n Telefono: " + telefono);
         dialogo1.setCancelable(false);
         dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {

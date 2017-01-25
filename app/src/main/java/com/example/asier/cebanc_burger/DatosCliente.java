@@ -15,7 +15,6 @@ public class DatosCliente extends MainActivity{
     //definimos las varible que vamos a utilizar
     private ImageView siguiente;
     private ImageView salir;
-
     private EditText nombre, apellidos, direccion, telefono;
     private boolean verificar = false;
 
