@@ -51,7 +51,7 @@ public class DatosCliente extends MainActivity{
                 String a = apellidos.getText().toString();
                 String d = direccion.getText().toString();
                 String t = telefono.getText().toString();
-                String mensajeValidacion = "";
+
 
                 if(nombreExiste(n)){
                     Toast toastBienvenido = Toast.makeText(getApplicationContext(),
@@ -247,7 +247,25 @@ public void comprobar2(){
 }
 
 
+    //este metodo lanza una ventana emergente que termina la actividad
+    public void salir() {
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("Salir");
+        dialogo1.setMessage("¿Estas seguro de que quieres salir?");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                finish();
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
 
+            }
+        });
+        dialogo1.show();
+
+    }
 
 
 
@@ -316,25 +334,6 @@ public void comprobar2(){
     }
 
 
-//este metodo lanza una ventana emergente que termina la actividad
-    public void salir() {
-        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
-        dialogo1.setTitle("Salir");
-        dialogo1.setMessage("¿Estas seguro de que quieres salir?");
-        dialogo1.setCancelable(false);
-        dialogo1.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-                finish();
-            }
-        });
-        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-
-            }
-        });
-        dialogo1.show();
-
-    }
 
     public void lanzarActividad(){
         Intent i = new Intent(DatosCliente.this, AnadirHamburguesas.class);
@@ -428,5 +427,7 @@ public void comprobar2(){
 
         }
     }
+
+
 
 }
