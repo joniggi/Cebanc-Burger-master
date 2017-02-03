@@ -30,6 +30,7 @@
     <string name="hElegidas">Hamburguesas elegidas:</string>
     <string name="bElegidas">Bebidas elegidas:</string>
     <string name="total">Total:</string>
+    <string name="comprobar">Comprobar</string>
     <string-array name="Drinks">
         <item>Coca cola</item>
         <item>Kas Naranja</item>
